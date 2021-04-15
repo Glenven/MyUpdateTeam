@@ -1,4 +1,5 @@
-const $ = new Env('更新东东小窝邀请码');
+//对应脚本jd_small_home.js
+const $ = new Env('东东小窝邀请码');
 const fs = require('fs');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
@@ -83,7 +84,7 @@ async function writeFile() {
     "inviteCode": $.shareCode || [],
   }
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jd_updateSmallHomeInviteCode.json`, JSON.stringify(info));
+  await fs.writeFileSync(`./shareCodes/jd_update_small_home.json`, JSON.stringify(info));
   // await fs.writeFileSync('jd_updateSmallHomeInviteCode.json', JSON.stringify(info));
   console.log(`文件写入成功,inviteCode已经替换`);
 }

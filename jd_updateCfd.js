@@ -1,4 +1,5 @@
-const $ = new Env("京喜财富岛");
+//对应脚本jd_cfd.js
+const $ = new Env("京喜财富岛互助码");
 const fs = require('fs');
 const JD_API_HOST = "https://m.jingxi.com/";
 const notify = $.isNode() ? require('./sendNotify') : '';
@@ -52,7 +53,7 @@ async function writeFile() {
     strGroupIds : $.strGroupIds
   }
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/cfd.json`, JSON.stringify(info));
+  await fs.writeFileSync(`./shareCodes/jd_cfd.json`, JSON.stringify(info));
   console.log({
     shareId : $.strMyShareIds,
     strGroupIds : $.strGroupIds

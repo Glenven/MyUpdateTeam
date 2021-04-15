@@ -1,4 +1,5 @@
-const $ = new Env('更新领现金');
+//对应脚本jd_cash.js
+const $ = new Env('领现金互助码');
 const fs = require('fs');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -49,7 +50,7 @@ $.shareCodes = [];
     })
 async function writeFile() {
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jd_updateCash.json`, JSON.stringify($.shareCodes));
+  await fs.writeFileSync(`./shareCodes/jd_cash.json`, JSON.stringify($.shareCodes));
   console.log(`文件写入成功,inviteCode已经替换`);
 }
 function jdCash(info=false) {

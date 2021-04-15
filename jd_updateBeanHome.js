@@ -1,4 +1,5 @@
-const $ = new Env('更新抢京豆邀请码');
+//对应脚本jd_bean_home.js
+const $ = new Env('更新领京豆邀请码');
 const fs = require('fs');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
@@ -79,7 +80,7 @@ function showMsg() {
 
 async function writeFile() {
   if (!fs.existsSync(`./shareCodes`)) fs.mkdirSync(`./shareCodes`);
-  await fs.writeFileSync(`./shareCodes/jd_updateBeanHome.json`, JSON.stringify($.codeInfo));
+  await fs.writeFileSync(`./shareCodes/jd_bean_home.json`, JSON.stringify($.codeInfo));
   // await fs.writeFileSync('jd_updateBeanHome.json', JSON.stringify($.codeInfo));
   console.log(`文件写入成功,inviteCode已经替换`);
 }
