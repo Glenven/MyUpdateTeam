@@ -1,16 +1,11 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: 京喜财富岛_json
+name: 城城分现金_json
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '10 16 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_updateCFD
+    types: jd_updateCity
 jobs:
   build:
     env:
@@ -26,19 +21,17 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【更新财富岛】'
+      - name: '运行 【jd_updateCity】'
         run: |
-          node jd_updateCfd.js
+          node jd_updateCity.js
         env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          JD_COOKIE: ${{ secrets.JDCT_COOKIE }}
       - name: commit
         run: |
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.USER_NAME }}
           git add .
-          git commit -m "update by Github Action" -a || echo "Nothing to update"
+          git commit -m "update by wuzhi01" -a || echo "Nothing to update"
       
       - name: Push changes
         uses: ad-m/github-push-action@master
