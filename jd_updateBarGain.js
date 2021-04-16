@@ -62,10 +62,20 @@ async function writeFile() {
   console.log(`文件写入成功`);
 }
 function showMsg() {
-  message += `本次运行获得${$.beans}京豆`
-  return new Promise(resolve => {
-    $.msg($.name, '', `【京东账号${$.index}】${$.nickName}\n${message}`);
-    resolve()
+  return new Promise(async resolve => {
+    try {
+      await $.http.get({url: `https://purge.jsdelivr.net/gh/h455257166/MyUpdateTeam@main/shareCodes/jd_barGain.json`}).then((resp) => {
+        if (resp.statusCode === 200) {
+          console.log(`已刷新CDN缓存`)
+        } else {
+          console.log(`刷新失败::${JSON.stringify(resp)}`)
+        }
+      });
+    } catch (e) {
+      $.log(e)
+    } finally {
+      resolve()
+    }
   })
 }
 
