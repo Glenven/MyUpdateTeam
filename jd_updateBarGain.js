@@ -20,7 +20,7 @@ if ($.isNode()) {
 
 !(async () => {
   if (!cookiesArr[0]) {
-    $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
+    $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/', {"open-url": "https://bean.m.jd.com/"});
     return;
   }
   for (let i = 0; i < cookiesArr.length; i++) {
@@ -42,7 +42,7 @@ if ($.isNode()) {
         continue
       }
       await barGain();
-      // await showMsg();
+      await showMsg();
     }
   }
   await writeFile();
@@ -87,7 +87,7 @@ function getBargainDetail(body) {
             if (data.msg === "success") {
               const { bargainingVo, bargainInfoVo, activityId } = data['bargainDetailInfoVo'];
               const obj = { shopId: bargainingVo.shopId, activityId }
-              // console.log(JSON.stringify(obj));
+              console.log(JSON.stringify(obj));
               console.log(`\n${bargainingVo['skuName']}\n已砍 ${bargainInfoVo['bargainPrice']}元，还差${bargainInfoVo['remainPrice']}\n`);
               $.inBargaining.push(obj)
             } else {
