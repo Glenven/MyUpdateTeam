@@ -1,22 +1,20 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: jd_updateZz
+name: jd_updateBarGain
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0-6/1,16 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_updateZz
+    types: jd_updateBarGain
 jobs:
   build:
     env:
       dst_key: ${{ secrets.GITEE_PRIVATE_KEY }} # 我自己同步到gitee使用，其他人可忽略
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
+    if: ${{ github.event.repository.owner.id == github.event.sender.id }}
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js 10.x
@@ -26,19 +24,17 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【更新赚京豆】'
+      - name: 'Run jd_updateBarGain'
         run: |
-          node jd_updateZz.js
+          node jd_updateBarGain.js
         env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          JD_COOKIE: ${{ secrets.JDFREE_COOKIE }}
       - name: commit
         run: |
           git config --global user.email ${{ secrets.EMAIL }}
           git config --global user.name ${{ secrets.USER_NAME }}
           git add .
-          git commit -m "update by Github Action" -a || echo "Nothing to update"
+          git commit -m "update by wuzhi01" -a || echo "Nothing to update"
       
       - name: Push changes
         uses: ad-m/github-push-action@master
