@@ -5,12 +5,12 @@ name: 京东赚赚_json
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0-6/1,16 * * *'
-  watch:
-    types: started
-  repository_dispatch:
-    types: jd_updateZz
+  # schedule:
+  #   - cron: '0 0-6/1,16 * * *'
+  # watch:
+  #   types: started
+  # repository_dispatch:
+  #   types: jd_updateZz
 jobs:
   build:
     env:

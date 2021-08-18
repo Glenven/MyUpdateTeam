@@ -5,12 +5,12 @@ name: 东东小窝_json
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 16 * * *'
-  watch:
-    types: started
-  repository_dispatch:
-    types: jd_update_small_home
+  # schedule:
+  #   - cron: '0 16 * * *'
+  # watch:
+  #   types: started
+  # repository_dispatch:
+  #   types: jd_update_small_home
 jobs:
   build:
     env:

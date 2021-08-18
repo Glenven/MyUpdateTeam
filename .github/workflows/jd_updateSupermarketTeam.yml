@@ -5,12 +5,12 @@ name: 东东超市战队PK_json
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '10,40 3,4,5 * * *'
-  watch:
-    types: started
-  repository_dispatch:
-    types: jd_updateSupermarketTeam
+  # schedule:
+  #   - cron: '10,40 3,4,5 * * *'
+  # watch:
+  #   types: started
+  # repository_dispatch:
+  #   types: jd_updateSupermarketTeam
 jobs:
   build:
     env:

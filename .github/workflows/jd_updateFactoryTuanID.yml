@@ -5,12 +5,12 @@ name: 京喜工厂团ID_json
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 23,0-16 * * *'
-  watch:
-    types: started
-  repository_dispatch:
-    types: jd_updateFactoryTuanID
+  # schedule:
+  #   - cron: '0 23,0-16 * * *'
+  # watch:
+  #   types: started
+  # repository_dispatch:
+  #   types: jd_updateFactoryTuanID
 jobs:
   build:
     env:

@@ -2,12 +2,12 @@ name: 城城分现金_json
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
-  watch:
-    types: started
-  repository_dispatch:
-    types: jd_updateCity
+  # schedule:
+  #   - cron: '0 0 * * *'
+  # watch:
+  #   types: started
+  # repository_dispatch:
+  #   types: jd_updateCity
 jobs:
   build:
     env:

@@ -5,12 +5,12 @@ name: 领现金_json
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 16 * * *'
-  watch:
-    types: started
-  repository_dispatch:
-    types: jd_updateCash
+  # schedule:
+  #   - cron: '0 16 * * *'
+  # watch:
+  #   types: started
+  # repository_dispatch:
+  #   types: jd_updateCash
 jobs:
   build:
     env:
